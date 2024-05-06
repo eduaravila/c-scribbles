@@ -6,19 +6,16 @@ void copy(char *target, char* source);
 void printarr(char *target, int size);
 
 #define MAX_LINE_SIZE 1000
+#define MIN_LINE_SIZE 10
 
 int main(void){
     int size = 0;
     char line[MAX_LINE_SIZE];
 
     while((size = getLine(line, MAX_LINE_SIZE)) > 0){
-        printf("%d ",size);
-        printarr(line, size);
-        printf("%p ", line);
-        printf("%p ", &line[1]);
-        printf("%c ", *(&line[1]+ 5)); // testing -> prints 'g'
-        printf("%c",'\n');
-
+        if (size > MIN_LINE_SIZE){
+            printarr(line, size);
+        }
     }
 
     return EXIT_SUCCESS;
