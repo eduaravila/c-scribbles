@@ -1,5 +1,6 @@
 #include "stdio.h"
 #include "stdlib.h"
+#include "longestLine.h"
 
 int getLine(char* line, int maxchars);
 void copy(char *target, char* source);
@@ -12,19 +13,23 @@ int main(void){
     char line[MAX_LINE_SIZE];
 
     while((size = getLine(line, MAX_LINE_SIZE)) > 0){
-        printf("%d ",size);
-        printarr(line, size);
-        printf("%p ", line);
-        printf("%p ", &line[1]);
-        printf("%c ", *(&line[1]+ 5)); // testing -> prints 'g'
-        printf("%c",'\n');
+       NewFunction(size, line);
 
     }
 
     return EXIT_SUCCESS;
 }
 
-int getLine(char* line, int maxchars){
+
+void NewFunction(int size, char line[1000])
+{
+        printf("%d ",size);
+        printarr(line, size);
+        printf("%p ", line);
+        printf("%p ", &line[1]);
+        printf("%c ", *(&line[1]+ 5)); // testing -> prints 'g'
+        printf("%c",'\n');
+}int getLine(char* line, int maxchars){
     int i = 0;
     char c;
     while(i < maxchars && (c = getchar()) != '\n' && c != EOF) {
